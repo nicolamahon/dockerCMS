@@ -6,6 +6,7 @@ if __name__ == "__main__":
     while True:
         print ("""
         Available API endpoints:
+	0. Exit					Exit script.py
         1. GET /containers                      List all containers
         2. GET /containers?state=running        List running containers (only)
         3. GET /containers/<id>                 Inspect a specific container
@@ -21,7 +22,6 @@ if __name__ == "__main__":
         13. PATCH /images/<id>                  Change a specific image's attributes
         14. DELETE /images/<id>                 Delete a specific image
         15. DELETE /images                      Delete all images
-        16. EXIT
         """)
 
         # get user's options
