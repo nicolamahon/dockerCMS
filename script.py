@@ -6,7 +6,7 @@ if __name__ == "__main__":
     while True:
         print ("""
         Available API endpoints:
-	0. Exit					Exit script.py
+		0. EXIT
         1. GET /containers                      List all containers
         2. GET /containers?state=running        List running containers (only)
         3. GET /containers/<id>                 Inspect a specific container
@@ -41,11 +41,11 @@ if __name__ == "__main__":
 
 		# inspect a specific container
         elif option == 3:
-            result = os.system("curl -s -X GET -H 'Accept: application/json' http://35.205.85.250:8080/containers/635d2d467002 | python3 -mjson.tool")
+            result = os.system("curl -s -X GET -H 'Accept: application/json' http://35.205.85.250:8080/containers/390f02a71461 | python3 -mjson.tool")
 
 		# dump a containers logs
         elif option == 4:
-            result = os.system("curl -s -X GET -H 'Accept: application/json' http://35.205.85.250:8080/containers/635d2d467002/logs | python3 -mjson.tool")
+            result = os.system("curl -s -X GET -H 'Accept: application/json' http://35.205.85.250:8080/containers/390f02a71461/logs | python3 -mjson.tool")
 
 		# list all services
         elif option == 5:
@@ -63,9 +63,9 @@ if __name__ == "__main__":
         elif option == 8:
             state = int(input("Enter 1 to start or 2 to stop: "))
             if state == 1:
-                result = os.system("""curl -X PATCH -H 'Content-Type: application/json' http://35.205.85.250:8080/containers/b6cd8ea512c8 -d '{"state": "running"}' | python3 -mjson.tool""")
+                result = os.system("""curl -X PATCH -H 'Content-Type: application/json' http://35.205.85.250:8080/containers/390f02a71461 -d '{"state": "running"}' | python3 -mjson.tool""")
             else:
-                result = os.system("""curl -X PATCH -H 'Content-Type: application/json' http://35.205.85.250:8080/containers/b6cd8ea512c8 -d '{"state": "stopped"}' | python3 -mjson.tool""")
+                result = os.system("""curl -X PATCH -H 'Content-Type: application/json' http://35.205.85.250:8080/containers/390f02a71461 -d '{"state": "stopped"}' | python3 -mjson.tool""")
 		
 		# delete a container
         elif option == 9:
@@ -81,11 +81,11 @@ if __name__ == "__main__":
 
 		# build an image
         elif option == 12:
-            result = os.system("curl -H 'Accept: application/json' -F file=@dockerfiles/sshd.Dockerfile http://35.205.85.250:8080/images")
+            result = os.system("curl -H 'Accept: application/json' -F file=@dockerfiles/whale-say.Dockerfile http://35.205.85.250:8080/images")
 
 		# change an images attributes
         elif option == 13:
-            result = os.system("""curl -s -X PATCH -H 'Content-Type: application/json' http://35.205.85.250:8080/images/9e7424e5dbae -d '{"tag":"test:1.0"}' | python3 -mjson.tool""")
+            result = os.system("""curl -s -X PATCH -H 'Content-Type: application/json' http://35.205.85.250:8080/images/6b362a9f73eb -d '{"tag":"test:1.0"}' | python3 -mjson.tool""")
 
 		# delete an image
         elif option == 14:
